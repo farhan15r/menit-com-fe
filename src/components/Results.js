@@ -1,23 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import queryString from "query-string";
 
 const Results = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
+
+  const parsed = queryString.parse(search);
 
   useEffect(() => {
     getPosts(search);
   }, [search]);
 
   const getPosts = async (search) => {
-    const response = await fetch(`http://localhost:3000/search${search}`);
+    const response = await fetch(`http://192.168.100.13:5000/search${search}`);
     const data = await response.json();
     setPosts(data);
   };
 
   return (
     <div className="container pt-20 flex flex-wrap justify-center">
-      <div className="w-8/12">
+      <div className="w-full md:w-8/12">
+        <h3 className="font-semibold text-slate-800 pb-2">
+          Found {posts.length} results from your search "{parsed.search_query}"
+        </h3>
         {posts.map((post, index) => {
           return (
             <div

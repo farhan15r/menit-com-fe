@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const SearchInput = () => {
   const [query, setQuery] = useState("");
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const search = (event) => {
     if (event.keyCode === 13) {

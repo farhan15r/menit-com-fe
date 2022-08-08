@@ -9,7 +9,7 @@ const PostsView = () => {
   }, []);
 
   const getPosts = async () => {
-    const response = await fetch("http://192.168.100.13:3000/");
+    const response = await fetch("http://192.168.100.13:5000/posts");
     const data = await response.json();
 
     setPosts(data);
@@ -21,7 +21,7 @@ const PostsView = () => {
         return (
           <Link
             key={index}
-            className="w-full lg:w-1/2 xl:w-1/3"
+            className="w-full md:w-1/2 xl:w-1/3 hover:scale-105 transition "
             to={`/${post.slug}`}
           >
             <div className="card bg-base-100 shadow-2xl m-2">

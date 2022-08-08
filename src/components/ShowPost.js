@@ -12,7 +12,7 @@ const ShowPost = () => {
   }, [slug]);
 
   const getPost = async (slug) => {
-    const response = await fetch(`http://192.168.100.13:3000/${slug}`);
+    const response = await fetch(`http://192.168.100.13:5000/posts/${slug}`);
     if (response.status !== 404) {
       const data = await response.json();
       setPost(data);
